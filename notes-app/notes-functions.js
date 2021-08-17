@@ -20,7 +20,7 @@ const generateNoteDOM = function(note) {
     const textEl = document.createElement('span')
     const button = document.createElement('button')
 
-        //Setupp the remove buttons
+        //Setup the remove buttons
     button.textContent = 'x'
     noteEl.appendChild(button)
 
