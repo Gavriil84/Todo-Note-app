@@ -1,4 +1,4 @@
-// Check eisting saved data
+// Check existing saved data
 const getSavedTodos = function() {
     const todosJSON = localStorage.getItem('todos')
 
@@ -24,6 +24,7 @@ const removeTodo = function(id) {
         todos.splice(todoIndex, 1)
     }
 }
+
 
 // Render application todos based on filters
 const renderTodos = function (todos, filters) {
@@ -61,7 +62,13 @@ const generateTodoDOM = function(todo) {
 
     // Setup todo checkbox
     checkbox.setAttribute('type', 'checkbox')
+    checkbox.checked = todo.completed
     todoEl.appendChild(checkbox)
+    checkbox.addEventListener("change", function() {
+        todo.completed = !todo.completed;
+        saveTodos(todos);
+        renderTodos(todos, filters)
+    })
 
     //Setup the todo text
     todoText.textContent = todo.text
